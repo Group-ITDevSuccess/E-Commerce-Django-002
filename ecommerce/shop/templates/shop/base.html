@@ -95,13 +95,23 @@
   ></script>
   {% block js %}
   <script>
+    let panier;
     if (localStorage.getItem("panier") == null) {
-      let panier = {};
+      panier = {};
     } else {
       panier = JSON.parse(localStorage.getItem("panier"));
     }
-    $(document).on('click', '.ted', function () {
-      console.log("Ajouter");
+    $(document).on("click", ".ted", function () {
+      let item_id = this.id.toString();
+      console.log("Ajouter : " + item_id);
+      if (panier[item_id] != undefined) {
+        panier[item_id] = panier[item_id] + 1;
+      } else {
+        panier[item_id] = 1;
+      }
+
+      console.log(panier);
+      localStorage.setItem('panier', JSON.stringify(panier))
     });
   </script>
   {% endblock %}
