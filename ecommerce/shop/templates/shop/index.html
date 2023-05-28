@@ -31,19 +31,19 @@
             <b>{{product.price}}</b> Ariary
           </div>
           <a href="{{product.id}}" class="btn btn-warning">Voir</a>
-          <button class="btn btn-success">Ajouter</button>
+          <button class="btn ted btn-success">Ajouter</button>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
-  <div class="row mt-3">
-    <div class="col-md-3 offset-md-4">
+  <div class="row text-center">
+    <div class="col-md-3 mt-3">
       <ul class="pagination">
         {% if products.has_previous %}
         <li class="page-item">
           <a class="page-link" href="?page={{products.previous_page_number}}"
-            >Precedent</a
+            >Précédent</a
           >
         </li>
         {% endif %}
@@ -53,6 +53,7 @@
             >{{products.number}}</a
           >
         </li>
+
         {% if products.has_next %}
         <li class="page-item">
           <a class="page-link" href="?page={{products.next_page_number}}"
