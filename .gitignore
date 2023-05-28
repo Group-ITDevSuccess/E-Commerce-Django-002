@@ -1,0 +1,58 @@
+# Fichiers de configuration Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+
+# Fichiers de sauvegarde
+*~
+*.bak
+
+# Fichiers de médias
+media/
+
+# Fichiers de cache
+*.swp
+*.swo
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Dossiers spécifiques à Django
+/staticfiles/
+/media/
+
+# Fichiers spécifiques à l'environnement virtuel (ex: virtualenv, pipenv)
+venv/
+env/
+.Python
+
+# Fichiers de dépendances et de build
+*.env
+*.egg-info/
+dist/
+build/
+bin/
+lib/
+
+# Fichiers générés automatiquement
+*.pyproj
+*.po
+*.mo
+*.pot
+*.bak
+*.sqlite3
+*.db
+*.coverage
+.coverage.*
+htmlcov/
+
+# Fichiers de documentation
+docs/_build/
+
+# Fichiers de configuration spécifiques à l'éditeur
+.vscode/
+.idea/
+*.swp
