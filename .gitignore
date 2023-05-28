@@ -43,7 +43,6 @@ lib/
 *.mo
 *.pot
 *.bak
-*.sqlite3
 *.db
 *.coverage
 .coverage.*
