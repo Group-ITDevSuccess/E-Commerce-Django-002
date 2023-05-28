@@ -43,7 +43,7 @@
                     <a class="nav-link" href="#">Produits</a>
                   </li>
                   <li class="nav-item">
-                    <a id ="panier"class="nav-link" href="#">Panier(0)</a>
+                    <a id="panier" class="nav-link" href="#">Panier(0)</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a
@@ -95,26 +95,32 @@
   ></script>
   {% block js %}
   <script>
-    let panier;
-    if (localStorage.getItem("panier") == null) {
-      panier = {};
-    } else {
-      panier = JSON.parse(localStorage.getItem("panier"));
-    }
-    $(document).on("click", ".ted", function () {
-      let item_id = this.id.toString();
-      console.log("Ajouter : " + item_id);
-      if (panier[item_id] != undefined) {
-        panier[item_id] = panier[item_id] + 1;
+    $(document).ready(function () {
+      let panier;
+      if (localStorage.getItem("panier") == null) {
+        panier = {};
       } else {
-        panier[item_id] = 1;
+        panier = JSON.parse(localStorage.getItem("panier"));
       }
 
-      console.log(panier);
-      localStorage.setItem('panier', JSON.stringify(panier));
       nb_clic = Object.keys(panier).length;
-      document.getElementById('panier').innerHTML = `Panier(${nb_clic})`
+      document.getElementById("panier").innerHTML = `Panier(${nb_clic})`;
+
+      $(document).on("click", ".ted", function () {
+        let item_id = this.id.toString();
+        console.log("Ajouter : " + item_id);
+        if (panier[item_id] != undefined) {
+          panier[item_id] = panier[item_id] + 1;
+        } else {
+          panier[item_id] = 1;
+        }
+
+        localStorage.setItem("panier", JSON.stringify(panier));
+        nb_clic = Object.keys(panier).length;
+        document.getElementById("panier").innerHTML = `Panier(${nb_clic})`;
+      });
     });
   </script>
+
   {% endblock %}
 </html>
