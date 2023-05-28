@@ -30,7 +30,7 @@
           <div style="color: orange" class="card-text mb-2">
             <b>{{product.price}}</b> Ariary
           </div>
-          <button class="btn btn-warning">Voir</button>
+          <a href="{{product.id}}" class="btn btn-warning">Voir</a>
           <button class="btn btn-success">Ajouter</button>
         </div>
       </div>
@@ -42,16 +42,22 @@
       <ul class="pagination">
         {% if products.has_previous %}
         <li class="page-item">
-          <a class="page-link" href="?page={{products.previous_page_number}}">Precedent</a>
+          <a class="page-link" href="?page={{products.previous_page_number}}"
+            >Precedent</a
+          >
         </li>
         {% endif %}
 
         <li class="page-item active">
-          <a class="page-link" href="?page={{products.number}}">{{products.number}}</a>
+          <a class="page-link" href="?page={{products.number}}"
+            >{{products.number}}</a
+          >
         </li>
         {% if products.has_next %}
         <li class="page-item">
-          <a class="page-link" href="?page={{products.next_page_number}}">Suivant</a>
+          <a class="page-link" href="?page={{products.next_page_number}}"
+            >Suivant</a
+          >
         </li>
         {% endif %}
       </ul>
