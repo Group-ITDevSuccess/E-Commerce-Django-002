@@ -30,7 +30,7 @@ class Product(models.Model):
         return self.title
 
 class Commande(models.Model):
-    items = models.CharField(max_length=300)
+    items = models.CharField(max_length=500)
     name = models.CharField(max_length=200)
     email = models.EmailField()
     adresse = models.CharField(max_length=200)
@@ -41,3 +41,6 @@ class Commande(models.Model):
 
     class Meta:
         ordering = ['-date_commande']
+    
+    def __str__(self):
+        return self.name

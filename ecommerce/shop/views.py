@@ -33,6 +33,7 @@ def detail(request, myid):
 
 def checkout(request):
     if (request.method == 'POST'):
+        items = request.POST.get('items')
         name = request.POST.get('name')
         email = request.POST.get('email')
         adresse = request.POST.get('adresse')
@@ -41,7 +42,7 @@ def checkout(request):
         ville = request.POST.get('ville')
         zipcode = request.POST.get('zipcode')
         commande = Commande(
-            name=name, email=email, ville=ville,
+            items=items, name=name, email=email, ville=ville,
             adresse=adresse,  pays=pays, zipcode=zipcode)
         commande.save()
 
