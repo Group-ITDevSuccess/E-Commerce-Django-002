@@ -78,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'itdevsuccess$ti_varotra_v1_0',
         'USER': 'itdevsuccess',
-        'PASSWORD': '',
+        'PASSWORD': 'AllahSeul',
         'HOST': 'itdevsuccess.mysql.pythonanywhere-services.com',
         'PORT': '3306',
     },
