@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bsusxfyedxq7ts2g6tem',
-        'USER': 'ufxsioftyqrykqbh',
-        'PASSWORD': '1QjubcgLuEo2m1SBIt43',
-        'HOST': 'bsusxfyedxq7ts2g6tem-mysql.services.clever-cloud.com',
+        'NAME': 'itdevsuccess$ti_varotra_v1_0',
+        'USER': 'itdevsuccess',
+        'PASSWORD': '',
+        'HOST': 'itdevsuccess.mysql.pythonanywhere-services.com',
         'PORT': '3306',
     },
     'local': {
