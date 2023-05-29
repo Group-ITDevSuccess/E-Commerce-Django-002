@@ -41,7 +41,7 @@ def checkout(request):
         ville = request.POST.get('ville')
         zipcode = request.POST.get('zipcode')
         commande = Commande(
-            name=name, email=email,
+            name=name, email=email, ville=ville,
             adresse=adresse,  pays=pays, zipcode=zipcode)
         commande.save()
 
