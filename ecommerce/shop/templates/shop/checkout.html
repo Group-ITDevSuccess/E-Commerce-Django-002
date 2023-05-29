@@ -48,7 +48,24 @@
         <label for="inputZip" class="form-label">Zip</label>
         <input type="text" name="zipcode" class="form-control" id="inputZip" />
       </div>
-      <div class="col-12">
+      <div class="col-md-12">
+        <label for="inputTotal" class="form-label">Somme totale à payer</label>
+        <div class="row">
+          <div class="col-md-7">
+            <input
+              type="text"
+              name="total"
+              class="bg-dark text-warning form-control"
+              id="inputTotal"
+              readonly
+            />
+          </div>
+          <div class="col-md-5">
+            <strong>Ariany</strong>
+          </div>
+        </div>
+      </div>
+      <div class="col-7 mb-4">
         <button type="submit" class="btn btn-primary">Commander</button>
       </div>
     </form>
@@ -69,7 +86,6 @@
   for (item in panier) {
     let name = panier[item][1];
     let quantity = panier[item][0];
-    //let price = (panier[item][2]).toLocaleString();
     let price = panier[item][2];
 
     number += quantity;
@@ -86,7 +102,7 @@
         <span class="badge bg-primary rounded-pill">${quantity}</span>
       </li>
       `;
-  $("#item-list").append(itemString);
+    $("#item-list").append(itemString);
   }
 
   let itemNumber = `
@@ -107,8 +123,8 @@
   </div>
 `;
 
-$("#item-number").append(itemNumber);
-
+  $("#item-number").append(itemNumber);
+  $("#inputTotal").val(totalPrice.toLocaleString());
 
   $("#items").val(JSON.stringify(panier));
 </script>
