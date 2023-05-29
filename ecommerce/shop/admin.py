@@ -3,6 +3,7 @@ from django.contrib import admin
 from .models import Category, Product, Commande
 
 # Register your models here.
+
 admin.site.site_header = "Admin TI-Varotra"
 admin.site.site_title = "Gestion Adminstrateur de TI-Varotra"
 admin.site.index_title = "Manageur"
@@ -19,8 +20,10 @@ class AdminProduct(admin.ModelAdmin):
 
 
 class AdminCommande(admin.ModelAdmin):
-    list_display = ('items', 'name', 'email', 'adresse',
-                    'pays', 'ville', 'total', 'date_commande')
+    list_display = (
+        'items', 'name', 'email', 'adresse',
+        'pays', 'ville', 'total', 'date_commande')
+    
 
 
 admin.site.register(Product, AdminProduct)
