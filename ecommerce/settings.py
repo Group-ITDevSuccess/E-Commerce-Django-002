@@ -73,28 +73,24 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'itdevsuccess$ti_varotra_v1_0',
-        'USER': 'itdevsuccess',
-        'PASSWORD': 'AllahSeul',
-        'HOST': 'itdevsuccess.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
-    },
-    'local': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DJANGO_SETTINGS_MODULE' in os.environ and os.environ['DJANGO_SETTINGS_MODULE'] == 'production_settings':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'itdevsuccess$ti_varotra_v1_0',
+            'USER': 'itdevsuccess',
+            'PASSWORD': 'AllahSeul',
+            'HOST': 'itdevsuccess.mysql.pythonanywhere-services.com',
+            'PORT': '3306',
+        }
     }
-}
-
-if 'DATABASE_URL' in os.environ:
-    import dj_database_url
-    db_from_env = dj_database_url.config(conn_max_age=600)
-    DATABASES['default'].update(db_from_env)
 else:
-    DATABASES['default'] = DATABASES['local']
-
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
