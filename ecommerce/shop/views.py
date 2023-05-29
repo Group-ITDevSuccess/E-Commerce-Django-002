@@ -73,3 +73,6 @@ def confirmation(request):
     }
     
     return render(request, 'shop/confirmation.html', context)
+
+def login(request):
+    return render(request, 'auth/login.html')
