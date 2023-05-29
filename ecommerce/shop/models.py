@@ -31,7 +31,6 @@ class Product(models.Model):
 
 class Commande(models.Model):
     items = models.CharField(max_length=500)
-    total = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
     email = models.EmailField()
     adresse = models.CharField(max_length=200)
@@ -39,6 +38,7 @@ class Commande(models.Model):
     pays = models.CharField(max_length=300)
     zipcode = models.CharField(max_length=300)
     date_commande = models.DateTimeField(auto_now=True)
+    total = models.FloatField()
 
     class Meta:
         ordering = ['-date_commande']
