@@ -3,6 +3,7 @@
   <div class="col-md-12 mt-4">
     <h3 class="text-center text-info">Liste des Produits dans le Panier</h3>
     <ol class="list-group list-group-numbered" id="item-list"></ol>
+    
   </div>
 </div>
 <hr />
@@ -65,7 +66,7 @@
   for (item in panier) {
     let name = panier[item][1];
     let quantity = panier[item][0];
-    let price = panier[item][2];
+    let price = (panier[item][2]).toLocaleString();
 
     let itemString = `
       <li
@@ -73,7 +74,7 @@
       >
         <div class="ms-2 me-auto">
           <div class="fw-bold">${name}</div>
-          Prix Total(${quantity}) : <b> ${price}</b> Ariary
+          Prix Total : <b class="badge bg-warning"> ${price}</b> Ariary
         </div>
         <span class="badge bg-primary rounded-pill">${quantity}</span>
       </li>
