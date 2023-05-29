@@ -66,7 +66,9 @@
         </div>
       </div>
       <div class="col-7 mb-4">
-        <button type="submit" class="btn btn-primary">Commander</button>
+        <button id="commander" type="submit" class="btn btn-primary">
+          Commander
+        </button>
       </div>
     </form>
   </div>
@@ -126,5 +128,14 @@
   $("#item-number").append(itemNumber);
   $("#inputTotal").val(totalPrice);
   $("#items").val(JSON.stringify(panier));
+  $("#commander").click(function () {
+    var panier = localStorage.getItem("panier"); // Récupère la valeur de l'élément 'panier' du localStorage
+    if (panier) {
+      localStorage.removeItem("panier"); // Supprime l'élément 'panier' du localStorage
+      alert('L\'élément "panier" a été effacé du localStorage !');
+    } else {
+      alert("L'élément \"panier\" n'existe pas dans le localStorage !");
+    }
+  });
 </script>
 {% endblock %}
