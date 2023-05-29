@@ -1,3 +1,0 @@
-python-3-11-1
-
-https://www.docstring.fr/blog/deployer-une-application-django-sur-pythonanywhere/
