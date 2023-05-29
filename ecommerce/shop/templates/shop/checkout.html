@@ -3,7 +3,7 @@
   <div class="col-md-12 mt-4">
     <h3 class="text-center text-info">Liste des Produits dans le Panier</h3>
     <ol class="list-group list-group-numbered" id="item-list"></ol>
-    
+    <ul class="list-group" id="item-number"></ul>
   </div>
 </div>
 <hr />
@@ -63,10 +63,17 @@
     panier = JSON.parse(localStorage.getItem("panier"));
   }
 
+  let totalPrice = 0;
+  let number = 0;
+
   for (item in panier) {
     let name = panier[item][1];
     let quantity = panier[item][0];
-    let price = (panier[item][2]).toLocaleString();
+    //let price = (panier[item][2]).toLocaleString();
+    let price = panier[item][2];
+
+    number += quantity;
+    totalPrice += price;
 
     let itemString = `
       <li
@@ -74,13 +81,34 @@
       >
         <div class="ms-2 me-auto">
           <div class="fw-bold">${name}</div>
-          Prix Total : <b class="badge bg-warning"> ${price}</b> Ariary
+          Prix Total Par Article : <b class="badge bg-warning"> ${price.toLocaleString()}</b> Ariary
         </div>
         <span class="badge bg-primary rounded-pill">${quantity}</span>
       </li>
       `;
-    $("#item-list").append(itemString);
+  $("#item-list").append(itemString);
   }
+
+  let itemNumber = `
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col">
+        <h4 class="">PRIX ET QUANTITE TOTAL</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <strong>Nombre d'articles :</strong> <i class="badge bg-success">${number}</i>
+      </div>
+      <div class="col">
+        <strong>Prix total :</strong> <i class="badge bg-success">${totalPrice.toLocaleString()}</i> Ariany
+      </div>
+    </div>
+  </div>
+`;
+
+$("#item-number").append(itemNumber);
+
 
   $("#items").val(JSON.stringify(panier));
 </script>
