@@ -34,7 +34,7 @@ def detail(request, myid):
 def checkout(request):
     if (request.method == 'POST'):
         items = request.POST.get('items')
-        total = request.POST.get('total')
+        total = float(request.POST.get('total'))
         name = request.POST.get('name')
         email = request.POST.get('email')
         adresse = request.POST.get('adresse')
