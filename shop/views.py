@@ -1,5 +1,5 @@
-from django.shortcuts import redirect, render
 from django.core.paginator import Paginator
+from django.shortcuts import redirect, render
 
 from .models import Product, Commande
 
@@ -53,7 +53,7 @@ def checkout(request):
     return render(request, 'shop/checkout.html')
 
 def confirmation(request):
-    info = Commande.objects.all()[:1];
+    info = Commande.objects.all()[:1]
 
     for item in info:
         name = item.name
@@ -74,5 +74,5 @@ def confirmation(request):
     
     return render(request, 'shop/confirmation.html', context)
 
-def login(request):
+def login_page(request):
     return render(request, 'auth/login.html')

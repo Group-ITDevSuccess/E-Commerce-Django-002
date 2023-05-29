@@ -1,6 +1,6 @@
 from django.urls import path
 
-from shop.views import index, product, detail, checkout, confirmation, login
+from shop.views import index, product, detail, checkout, confirmation, login_page
 
 urlpatterns = [
     path('', index, name='home'),
@@ -8,5 +8,5 @@ urlpatterns = [
     path('shop/<int:myid>', detail, name='detail'),
     path('shop/checkout', checkout, name='checkout'),
     path('shop/confirmation', confirmation, name='confirmation'),
-    path('auth/login', login, name='login'),
+    path('auth/login', login_page, name='login'),
 ]
