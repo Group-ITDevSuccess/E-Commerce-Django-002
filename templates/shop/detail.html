@@ -1,17 +1,18 @@
 {% extends "../partials/base.html" %}
 {% block content %}
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 mt-5 mb-5">
         <div class="product-image">
-            <img src="{{product.image}}" class="img-fluid" alt="Product Image" />
+            <img src="{{product.image}}" class="img-fluid" alt="Product Image" style="width: 300px; height: 300px;" />
         </div>
+        <a href="/shop" class="btn btn-primary mt-3">Retour</a>
     </div>
     <div class="col-md-6">
         <div class="product-details">
             <h1 class="text-warning display-3">{{product.title}}</h1>
             <h4 class="text-danger">Prix : {{product.price}} MGA</h4>
-            <p class="text-info">{{product.description}}</p>
-            <a href="#" class="btn btn-success btn-lg">Acheter</a>
+            <p class="text-dark">{{product.description}}</p>
+            <button href="#" id="selected_{{product.id}}" class="btn ted btn-success btn-lg">Acheter</button>
         </div>
     </div>
 </div>
