@@ -10,7 +10,7 @@
   <div class="col-md-12">
     <form class="row g-3" method="POST">
       {% csrf_token %}
-      <input type="hidden" id="items" name="items" />
+      <input type="hidden" id="items" name="items" value="" />
       <div class="col-md-6">
         <label for="inputName" class="form-label">Nom</label>
         <input type="text" name="name" class="form-control" id="inputName" />
@@ -65,6 +65,7 @@
   for (item in panier) {
     let name = panier[item][1];
     let quantity = panier[item][0];
+    let price = panier[item][2];
 
     let itemString = `
       <li
@@ -72,7 +73,7 @@
       >
         <div class="ms-2 me-auto">
           <div class="fw-bold">${name}</div>
-          Prix Total(${quantity}) : <b>...</b> Ariary
+          Prix Total(${quantity}) : <b> ${price}</b> Ariary
         </div>
         <span class="badge bg-primary rounded-pill">${quantity}</span>
       </li>

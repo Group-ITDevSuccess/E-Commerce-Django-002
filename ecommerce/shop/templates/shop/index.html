@@ -30,7 +30,7 @@
             {{product.title}}
           </div>
           <div style="color: orange" class="card-text mb-2">
-            <b>{{product.price}}</b> Ariary
+            <b  id="price_{{product.id}}">{{product.price}}</b> Ariary
           </div>
           <a href="{{product.id}}" class="btn btn-warning">Voir</a>
           <button id="{{product.id}}" class="btn ted btn-success">
@@ -90,10 +90,12 @@
       if (panier[item_id] != undefined) {
         quantity = panier[item_id][0] + 1;
         panier[item_id][0] = quantity;
+        panier[item_id][2] += parseFloat(document.getElementById('price_'+ item_id).innerHTML);
       } else {
         quantity = 1;
+        price = parseFloat(document.getElementById('price_'+ item_id).innerHTML);
         name = document.getElementById("product_" + item_id).innerHTML;
-        panier[item_id] = [quantity, name];
+        panier[item_id] = [quantity, name, price];
       }
 
       localStorage.setItem("panier", JSON.stringify(panier));
