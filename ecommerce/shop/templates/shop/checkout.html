@@ -1,8 +1,55 @@
 {% extends 'shop/base.html' %} {% block content %}
 <div class="row">
   <div class="col-md-12 mt-4">
-    <h2 class="text-center text-info">Liste des Paniers</h2>
+    <h3 class="text-center text-info">Liste des Produits dans le Panier</h3>
     <ol class="list-group list-group-numbered" id="item-list"></ol>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-md-12">
+    <form class="row g-3" method="POST">
+      {% csrf_token %}
+      <div class="col-md-6">
+        <label for="inputName" class="form-label">Nom</label>
+        <input type="text" name="name" class="form-control" id="inputName" />
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail" class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" id="inputEmail" />
+      </div>
+      <div class="col-12">
+        <label for="inputAdresse" class="form-label">Adresse</label>
+        <input
+          type="text"
+          class="form-control"
+          name="adresse"
+          id="inputAdresse"
+          placeholder="1234 Main St"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="inputCity" class="form-label">Ville</label>
+        <input type="text" name="ville" class="form-control" id="inputVille" />
+      </div>
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">Pays</label>
+        <select id="inputPays" name="pays" class="form-select">
+          <option selected>Choose...</option>
+          <option>Madagascar</option>
+          <option>Mayote</option>
+          <option>Commore</option>
+          <option>La Reunion</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="inputZip" class="form-label">Zip</label>
+        <input type="text" name="zipcode" class="form-control" id="inputZip" />
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Commander</button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -28,9 +75,8 @@
         </div>
         <span class="badge bg-primary rounded-pill">${quantity}</span>
       </li>
-      `
-    ;
-    $('#item-list').append(itemString);
+      `;
+    $("#item-list").append(itemString);
   }
 </script>
 {% endblock %}
