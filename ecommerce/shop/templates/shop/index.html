@@ -1,4 +1,4 @@
-{% extends "shop/base.html" %} {% block content %}
+{% extends "../partials/base.html" %} {% block content %}
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-12">
@@ -24,7 +24,7 @@
     {% for product in products%}
     <div class="col-md-3 mt-3">
       <div class="card">
-        <img src="{{product.image}}" alt="" class="card-ing-top" />
+        <img src="{{product.image}}" style="width: auto; height: 250px;" alt="" class="card-ing-top" />
         <div class="card-body">
           <div id="product_{{product.id}}" class="card-title">
             {{product.title}}
@@ -148,7 +148,7 @@
 
       panierString += `
           </ul>
-          <a href='/checkout' class='btn btn-primary text-center mt-2'>Verifier</a>
+          <a href='/shop/checkout' class='btn btn-primary text-center mt-2'>Verifier</a>
           `;
 
       return panierString;

@@ -4,9 +4,11 @@ from django.core.paginator import Paginator
 from .models import Product, Commande
 
 # Create your views here.
-
-
 def index(request):
+    return render(request, 'home/index.html')
+
+
+def product(request):
     product_object = Product.objects.all()
     item_name = request.GET.get('item-name')
     if (item_name != "" and item_name is not None):
