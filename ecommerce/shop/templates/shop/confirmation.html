@@ -1,14 +1,14 @@
 {% extends 'shop/base.html' %} {% block content %}
-<div class="container">
-  <h1 class="text-center">Détails du produit</h1>
+<div class="container mt-4">
+  <h1 class="text-center mb-3">Détails du produit</h1>
 
   <div class="row">
     <div class="col-md-4 mb-4">
       <div class="card text-center">
-        <i class="material-icons" style="font-size: 48px">inbox</i>
+        <i class="material-icons" style="font-size: 48px">person</i>
         <div class="card-body">
-          <h2>Produit</h2>
-          <p>Informations sur le produit</p>
+          <h2>User</h2>
+          <p>{{username}}</p>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
         <i class="material-icons" style="font-size: 48px">attach_money</i>
         <div class="card-body">
           <h2>Prix</h2>
-          <p>Informations sur le prix</p>
+          <p>{{price}} Ariary</p>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
         <i class="material-icons" style="font-size: 48px">location_on</i>
         <div class="card-body">
           <h2>Localisation</h2>
-          <p>Informations sur la localisation</p>
+          <p>{{ville}}, {{pays}} {{zipcode}}</p>
         </div>
       </div>
     </div>
@@ -40,22 +40,19 @@
         <i class="material-icons" style="font-size: 48px">access_time</i>
         <div class="card-body">
           <h2>Durée</h2>
-          <p>Informations sur la durée</p>
+          <p>(Non Determiner)</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<div class="container-fluid mt-4">
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <a href="liste-produits.html" class="btn btn-primary">
-        <i class="material-icons">arrow_back</i> Retour vers la liste des
-        produits
-      </a>
+<div class="row">
+    <div class="d-grid gap-2 col-3 mx-auto mt-4">
+        <a href="/" class="btn btn-success" type="button">Autre Produit</a>
     </div>
-  </div>
+    <div class="d-grid gap-2 col-3 mx-auto mt-4">
+        <a href="#" class="btn btn-danger" type="button">Annuler Commande</a>
+    </div>
 </div>
 
 {% endblock %}

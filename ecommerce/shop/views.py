@@ -46,7 +46,7 @@ def checkout(request):
             items=items, total=total, name=name, email=email, ville=ville,
             adresse=adresse,  pays=pays, zipcode=zipcode)
         commande.save()
-        redirect('confirmation')
+        return redirect('confirmation')
 
     return render(request, 'shop/checkout.html')
 
@@ -55,9 +55,19 @@ def confirmation(request):
 
     for item in info:
         name = item.name
+        price = item.total
+        pays = item.pays
+        adresse = item.adresse
+        ville = item.ville
+        zipcode = item.zipcode
     
     context = {
-        'username': name
+        'username': name,
+        'price': price,
+        'adresse': adresse,
+        'pays': pays,
+        'ville': ville,
+        'zipcode': zipcode
     }
     
     return render(request, 'shop/confirmation.html', context)
