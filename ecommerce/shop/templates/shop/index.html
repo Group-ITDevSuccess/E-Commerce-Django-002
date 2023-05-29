@@ -89,9 +89,12 @@
       let item_id = this.id.toString();
       console.log("Ajouter : " + item_id);
       if (panier[item_id] != undefined) {
-        panier[item_id] = panier[item_id] + 1;
+        quantity = panier[item_id][0] + 1;
+        panier[item_id][0] = quantity;
       } else {
-        panier[item_id] = 1;
+        quantity = 1;
+        name = document.getElementById('product_'+item_id).innerHTML;
+        panier[item_id] = [quantity, name];
       }
 
       localStorage.setItem("panier", JSON.stringify(panier));
@@ -115,26 +118,27 @@
 
       let index = 1;
       if (panier) {
-        Object.entries(panier).forEach(([x, quantite]) => {
-          const produitElement = document.getElementById("product_" + x);
+        for (x in panier) {
+          console.log(x);
+          const produitElement = panier[x];
           const produitNom = produitElement
-            ? produitElement.innerHTML
+            ? produitElement[1]
             : "Produit inconnu";
 
           // Tronquer le nom du produit si nécessaire
           const produitNomTronque =
-            produitNom.length > 20
-              ? produitNom.slice(0, 20) + "..."
+            produitNom.length > 30
+              ? produitNom.slice(0, 30) + "..."
               : produitNom;
 
           panierString += `
               <li class="list-group-item">
                 <span class="badge bg-primary">${index}</span>
                 <span class="text-truncate">${produitNomTronque}</span>
-                <span class="badge bg-secondary">${quantite}</span>
+                <span class="badge bg-secondary">${panier[x][0]}</span>
               </li>`;
           index++;
-        });
+        }
       }
 
       panierString += `
