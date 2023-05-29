@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.core.paginator import Paginator
 
 from .models import Product, Commande
@@ -46,5 +46,18 @@ def checkout(request):
             items=items, total=total, name=name, email=email, ville=ville,
             adresse=adresse,  pays=pays, zipcode=zipcode)
         commande.save()
+        redirect('confirmation')
 
     return render(request, 'shop/checkout.html')
+
+def confirmation(request):
+    info = Commande.objects.all()[:1];
+
+    for item in info:
+        name = item.name
+    
+    context = {
+        'username': name
+    }
+    
+    return render(request, 'shop/confirmation.html', context)

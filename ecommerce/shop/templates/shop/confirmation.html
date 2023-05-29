@@ -1,0 +1,61 @@
+{% extends 'shop/base.html' %} {% block content %}
+<div class="container">
+  <h1 class="text-center">Détails du produit</h1>
+
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card text-center">
+        <i class="material-icons" style="font-size: 48px">inbox</i>
+        <div class="card-body">
+          <h2>Produit</h2>
+          <p>Informations sur le produit</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card text-center">
+        <i class="material-icons" style="font-size: 48px">attach_money</i>
+        <div class="card-body">
+          <h2>Prix</h2>
+          <p>Informations sur le prix</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card text-center">
+        <i class="material-icons" style="font-size: 48px">location_on</i>
+        <div class="card-body">
+          <h2>Localisation</h2>
+          <p>Informations sur la localisation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card text-center">
+        <i class="material-icons" style="font-size: 48px">access_time</i>
+        <div class="card-body">
+          <h2>Durée</h2>
+          <p>Informations sur la durée</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <a href="liste-produits.html" class="btn btn-primary">
+        <i class="material-icons">arrow_back</i> Retour vers la liste des
+        produits
+      </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
