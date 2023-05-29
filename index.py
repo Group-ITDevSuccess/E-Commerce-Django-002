@@ -7,7 +7,7 @@ venv_path = "./env/votre/virtualenv"
 # Commande pour activer le virtualenv
 activate_command = os.path.join(venv_path, "Scripts", "activate")
 
-# Chemin vers le dossier du projet "ecommer"
+# Chemin vers le dossier du projet "ecommerce"
 projet_path = "./ecommerce"
 
 # Commande pour exécuter le serveur Django
