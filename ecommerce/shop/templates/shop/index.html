@@ -87,7 +87,6 @@
 
     $(document).on("click", ".ted", function () {
       let item_id = this.id.toString();
-      console.log("Ajouter : " + item_id);
       if (panier[item_id] != undefined) {
         quantity = panier[item_id][0] + 1;
         panier[item_id][0] = quantity;
@@ -119,7 +118,6 @@
       let index = 1;
       if (panier) {
         for (x in panier) {
-          console.log(x);
           const produitElement = panier[x];
           const produitNom = produitElement
             ? produitElement[1]
