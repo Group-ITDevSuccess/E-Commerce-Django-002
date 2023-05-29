@@ -24,13 +24,18 @@
     {% for product in products%}
     <div class="col-md-3 mt-3">
       <div class="card">
-        <img src="{{product.image}}" style="width: auto; height: 250px;" alt="" class="card-ing-top" />
+        <img
+          src="{{product.image}}"
+          alt=""
+          class="card-img-top"
+          style="object-fit: cover; height: 200px"
+        />
         <div class="card-body">
           <div id="product_{{product.id}}" class="card-title">
             {{product.title}}
           </div>
           <div style="color: orange" class="card-text mb-2">
-            <b  id="price_{{product.id}}">{{product.price}}</b> Ariary
+            <b id="price_{{product.id}}">{{product.price}}</b> Ariary
           </div>
           <a href="{{product.id}}" class="btn btn-warning">Voir</a>
           <button id="{{product.id}}" class="btn ted btn-success">
@@ -90,10 +95,14 @@
       if (panier[item_id] != undefined) {
         quantity = panier[item_id][0] + 1;
         panier[item_id][0] = quantity;
-        panier[item_id][2] += parseFloat(document.getElementById('price_'+ item_id).innerHTML);
+        panier[item_id][2] += parseFloat(
+          document.getElementById("price_" + item_id).innerHTML
+        );
       } else {
         quantity = 1;
-        price = parseFloat(document.getElementById('price_'+ item_id).innerHTML);
+        price = parseFloat(
+          document.getElementById("price_" + item_id).innerHTML
+        );
         name = document.getElementById("product_" + item_id).innerHTML;
         panier[item_id] = [quantity, name, price];
       }
