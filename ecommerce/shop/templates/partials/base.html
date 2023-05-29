@@ -94,6 +94,64 @@
       </div>
       {% block content %}{% endblock %}
     </div>
+    <footer class="bg-dark text-white py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Contact</h5>
+            <p>
+              <i class="material-icons align-middle me-1">mail</i> Email:
+              raharisontsidiany@example.com
+            </p>
+            <p>
+              <i class="material-icons align-middle me-1">phone</i> Téléphone:
+              +261-38-72-657-05
+            </p>
+            <p>
+              <i class="material-icons align-middle me-1">facebook</i> Facebook:
+              ...
+            </p>
+            <p>
+              <i class="material-icons align-middle me-1">link</i> Linkedin: ...
+            </p>
+            {% comment %}
+            <p>
+              <i class="material-icons align-middle me-1">github</i> Github: ...
+            </p>
+            {% endcomment %}
+          </div>
+          <div class="col-md-6">
+            <h5>Ecrire directement</h5>
+            <form>
+              <div class="mb-3">
+                <label for="contact-title" class="form-label">Intitulé</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contact-title"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="contact-content" class="form-label">Contenu</label>
+                <textarea
+                  class="form-control"
+                  id="contact-content"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Envoyer</button>
+            </form>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-lg-12 text-center">
+            <p class="mb-0">© 2023 ITDevSuccess. Tous droits réservés.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
   <!-- JS de Bootstrap 5 (optionnel, uniquement si vous avez besoin des fonctionnalités JavaScript de Bootstrap) -->
   <script

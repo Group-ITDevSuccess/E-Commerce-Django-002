@@ -1,9 +1,12 @@
+{% extends '../partials/base.html' %} {% block content %}
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-md-4">
       <div class="card mt-5">
-        <div class="card-header bg-primary text-white">
-          <h4><i class="material-icons">lock</i>Connexion à votre compte</h4>
+        <div class="card-header bg-dark text-white d-flex align-items-center">
+          <h4 class="mb-0">
+            <i class="material-icons me-2">lock</i>Connexion à votre compte
+          </h4>
         </div>
         <div class="card-body">
           <form>
@@ -39,25 +42,28 @@
               </label>
             </div>
             <div class="d-grid gap-2">
-              <button type="submit" class="btn btn-primary">
-                <i class="material-icons">login</i>Se connecter
-              </button>
+              <a href="#" type="submit" class="btn btn-success">
+                <i class="material-icons align-middle me-2">login</i>Se
+                connecter
+              </a>
             </div>
           </form>
           <hr />
           <div class="text-center">
-            <a href="#" class="text-decoration-none"
-              ><i class="material-icons">lock</i>Mot de passe oublié ?</a
-            >
+            <a href="#" class="text-decoration-none">
+              <i class="material-icons align-middle me-2">lock</i>Mot de passe
+              oublié ?
+            </a>
             <br />
             <span>Vous n'avez pas de compte ?</span>
-            <a href="#" class="text-decoration-none"
-              ><i class="material-icons">person_add</i>Inscrivez-vous maintenant
-              !</a
-            >
+            <a href="#" class="text-decoration-none">
+              <i class="material-icons align-middle me-1">person_add</i
+              >Inscrivez-vous maintenant !
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+{% endblock %}
