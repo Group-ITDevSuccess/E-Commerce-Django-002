@@ -13,7 +13,6 @@ env/
 db.sqlite3
 
 # macOS
-._*
 .DS_Store
 .fseventsd
 .Spotlight-V100
