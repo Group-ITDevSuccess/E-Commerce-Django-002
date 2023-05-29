@@ -26,12 +26,16 @@
       <div class="card">
         <img src="{{product.image}}" alt="" class="card-ing-top" />
         <div class="card-body">
-          <div id="product_{{product.id}}" class="card-title">{{product.title}}</div>
+          <div id="product_{{product.id}}" class="card-title">
+            {{product.title}}
+          </div>
           <div style="color: orange" class="card-text mb-2">
             <b>{{product.price}}</b> Ariary
           </div>
           <a href="{{product.id}}" class="btn btn-warning">Voir</a>
-          <button id="{{product.id}}" class="btn ted btn-success">Ajouter</button>
+          <button id="{{product.id}}" class="btn ted btn-success">
+            Ajouter
+          </button>
         </div>
       </div>
     </div>
@@ -65,83 +69,81 @@
     </div>
   </div>
 </div>
-{% endblock %}
 
-{% block js %}
-  <script>
-    $(document).ready(function () {
-      let panier;
-      if (localStorage.getItem("panier") == null) {
-        panier = {};
+{% endblock %} {% block js %}
+<script>
+  $(document).ready(function () {
+    let panier;
+    let panierElement = document.getElementById("panier");
+
+    if (localStorage.getItem("panier") == null) {
+      panier = {};
+    } else {
+      panier = JSON.parse(localStorage.getItem("panier"));
+    }
+
+    nb_clic = Object.keys(panier).length;
+    panierElement.innerHTML = `Panier(${nb_clic})`;
+
+    $(document).on("click", ".ted", function () {
+      let item_id = this.id.toString();
+      console.log("Ajouter : " + item_id);
+      if (panier[item_id] != undefined) {
+        panier[item_id] = panier[item_id] + 1;
       } else {
-        panier = JSON.parse(localStorage.getItem("panier"));
+        panier[item_id] = 1;
       }
 
+      localStorage.setItem("panier", JSON.stringify(panier));
       nb_clic = Object.keys(panier).length;
-      document.getElementById("panier").innerHTML = `Panier(${nb_clic})`;
+      panierElement.innerHTML = `Panier(${nb_clic})`;
+      panierElement.setAttribute("data-bs-content", AfficherList(panier));
+    });
 
-      $(document).on("click", ".ted", function () {
-        let item_id = this.id.toString();
-        console.log("Ajouter : " + item_id);
-        if (panier[item_id] != undefined) {
-          panier[item_id] = panier[item_id] + 1;
-        } else {
-          panier[item_id] = 1;
-        }
+    let popoverTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="popover"]')
+    );
+    let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+      panierElement.setAttribute("data-bs-content", AfficherList(panier));
+      return new bootstrap.Popover(popoverTriggerEl);
+    });
 
-        localStorage.setItem("panier", JSON.stringify(panier));
-        nb_clic = Object.keys(panier).length;
-        document.getElementById("panier").innerHTML = `Panier(${nb_clic})`;
-        document
-          .getElementById("panier")
-          .setAttribute("data-bs-content", AfficherList(panier));
-      });
-
-      let popoverTriggerList = [].slice.call(
-        document.querySelectorAll('[data-bs-toggle="popover"]')
-      );
-      let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        let panierElement = document.getElementById("panier");
-        panierElement.setAttribute("data-bs-content", AfficherList(panier));
-        return new bootstrap.Popover(popoverTriggerEl);
-      });
-
-      function AfficherList(panier) {
-        let panierString = `
+    function AfficherList(panier) {
+      let panierString = `
           <h5 class="text-danger">Liste des Produits</h5>
           <ul class="list-group">`;
 
-        let index = 1;
-        if (panier) {
-          Object.entries(panier).forEach(([x, quantite]) => {
-            const produitElement = document.getElementById("product_" + x);
-            const produitNom = produitElement
-              ? produitElement.innerHTML
-              : "Produit inconnu";
+      let index = 1;
+      if (panier) {
+        Object.entries(panier).forEach(([x, quantite]) => {
+          const produitElement = document.getElementById("product_" + x);
+          const produitNom = produitElement
+            ? produitElement.innerHTML
+            : "Produit inconnu";
 
-            // Tronquer le nom du produit si nécessaire
-            const produitNomTronque =
-              produitNom.length > 20
-                ? produitNom.slice(0, 20) + "..."
-                : produitNom;
+          // Tronquer le nom du produit si nécessaire
+          const produitNomTronque =
+            produitNom.length > 20
+              ? produitNom.slice(0, 20) + "..."
+              : produitNom;
 
-            panierString += `
+          panierString += `
               <li class="list-group-item">
                 <span class="badge bg-primary">${index}</span>
                 <span class="text-truncate">${produitNomTronque}</span>
                 <span class="badge bg-secondary">${quantite}</span>
               </li>`;
-            index++;
-          });
-        }
+          index++;
+        });
+      }
 
-        panierString += `
+      panierString += `
           </ul>
           <a href='/checkout' class='btn btn-primary text-center mt-2'>Verifier</a>
           `;
 
-        return panierString;
-      }
-    });
-  </script>
-  {% endblock %}
+      return panierString;
+    }
+  });
+</script>
+{% endblock %}
