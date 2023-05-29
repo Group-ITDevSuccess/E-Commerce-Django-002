@@ -92,23 +92,37 @@
         panier[item_id][0] = quantity;
       } else {
         quantity = 1;
-        name = document.getElementById('product_'+item_id).innerHTML;
+        name = document.getElementById("product_" + item_id).innerHTML;
         panier[item_id] = [quantity, name];
       }
 
       localStorage.setItem("panier", JSON.stringify(panier));
       nb_clic = Object.keys(panier).length;
       panierElement.innerHTML = `Panier(${nb_clic})`;
-      panierElement.setAttribute("data-bs-content", AfficherList(panier));
+      updateList(panier);
     });
 
     let popoverTriggerList = [].slice.call(
       document.querySelectorAll('[data-bs-toggle="popover"]')
     );
     let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-      panierElement.setAttribute("data-bs-content", AfficherList(panier));
+      updateList(panier);
       return new bootstrap.Popover(popoverTriggerEl);
     });
+
+    function updateList(panier) {
+      panierElement.setAttribute("data-bs-content", AfficherList(panier));
+    }
+
+    function checkName(name) {
+      const produitNom = name ? name[1] : "Produit inconnu";
+
+      // Tronquer le nom du produit si nécessaire
+      const produitNomTronque =
+        produitNom.length > 30 ? produitNom.slice(0, 30) + "..." : produitNom;
+
+      return produitNomTronque;
+    }
 
     function AfficherList(panier) {
       let panierString = `
@@ -119,16 +133,7 @@
       if (panier) {
         for (x in panier) {
           const produitElement = panier[x];
-          const produitNom = produitElement
-            ? produitElement[1]
-            : "Produit inconnu";
-
-          // Tronquer le nom du produit si nécessaire
-          const produitNomTronque =
-            produitNom.length > 30
-              ? produitNom.slice(0, 30) + "..."
-              : produitNom;
-
+          const produitNomTronque = checkName(produitElement);
           panierString += `
               <li class="list-group-item">
                 <span class="badge bg-primary">${index}</span>
