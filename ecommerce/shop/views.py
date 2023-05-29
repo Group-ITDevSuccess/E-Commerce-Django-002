@@ -30,5 +30,6 @@ def detail(request, myid):
 
     return render(request, 'shop/detail.html', context)
 
+
 def checkout(request):
     return render(request, 'shop/checkout.html')
