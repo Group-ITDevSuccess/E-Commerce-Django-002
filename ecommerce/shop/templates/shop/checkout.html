@@ -2,36 +2,35 @@
 <div class="row">
   <div class="col-md-12 mt-4">
     <h2 class="text-center text-info">Liste des Paniers</h2>
-    <ol class="list-group list-group-numbered">
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Subheading</div>
-          Cras justo odio
-        </div>
-        <span class="badge bg-primary rounded-pill">14</span>
-      </li>
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Subheading</div>
-          Cras justo odio
-        </div>
-        <span class="badge bg-primary rounded-pill">14</span>
-      </li>
-      <li
-        class="list-group-item d-flex justify-content-between align-items-start"
-      >
-        <div class="ms-2 me-auto">
-          <div class="fw-bold">Subheading</div>
-          Cras justo odio
-        </div>
-        <span class="badge bg-primary rounded-pill">14</span>
-      </li>
-    </ol>
+    <ol class="list-group list-group-numbered" id="item-list"></ol>
   </div>
 </div>
 
+{% endblock %} {% block js %}
+<script type="text/javascript">
+  if (localStorage.getItem("panier") == null) {
+    let panier = {};
+  } else {
+    panier = JSON.parse(localStorage.getItem("panier"));
+  }
+
+  for (item in panier) {
+    let name = panier[item][1];
+    let quantity = panier[item][0];
+
+    let itemString = `
+      <li
+      class="list-group-item d-flex justify-content-between align-items-start"
+      >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">${name}</div>
+          Prix Total(${quantity}) : <b>...</b> Ariary
+        </div>
+        <span class="badge bg-primary rounded-pill">${quantity}</span>
+      </li>
+      `
+    ;
+    $('#item-list').append(itemString);
+  }
+</script>
 {% endblock %}
