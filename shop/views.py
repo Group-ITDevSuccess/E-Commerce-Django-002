@@ -4,11 +4,8 @@ from django.shortcuts import redirect, render
 from .models import Product, Commande
 
 # Create your views here.
+
 def index(request):
-    return render(request, 'home/index.html')
-
-
-def product(request):
     product_object = Product.objects.all()
     item_name = request.GET.get('item-name')
     if (item_name != "" and item_name is not None):
@@ -73,6 +70,3 @@ def confirmation(request):
     }
     
     return render(request, 'shop/confirmation.html', context)
-
-def login_page(request):
-    return render(request, 'auth/login.html')
