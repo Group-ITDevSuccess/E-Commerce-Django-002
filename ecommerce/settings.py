@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-017*3l=04g=k4c95&slv^7ii2=3l@d5+mj%ph+d23n-u^s-**v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['itdevsuccess.pythonanywhere.com']
+ALLOWED_HOSTS = ['itdevsuccess.pythonanywhere.com', '127.0.0.1']
 
 # Application definition
 
@@ -87,6 +87,13 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+if 'DATABASE_URL' in os.environ:
+    import dj_database_url
+    db_from_env = dj_database_url.config(conn_max_age=600)
+    DATABASES['default'].update(db_from_env)
+else:
+    DATABASES['default'] = DATABASES['local']
 
 
 # Password validation
