@@ -75,6 +75,14 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'itdevsuccess$ti_varotra_v1_0',
+        'USER': 'itdevsuccess',
+        'PASSWORD': '',
+        'HOST': 'itdevsuccess.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+    },
+    'local': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
