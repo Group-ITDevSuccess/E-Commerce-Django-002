@@ -22,9 +22,10 @@ def index(request):
 
 def detail(request, myid):
     product = Product.objects.get(id=myid)
-
+    product_description_initial = product.description[:100] + '...'
     context = {
-        'product': product
+        'product': product,
+        'product_description_initial': product_description_initial
     }
 
     return render(request, 'shop/detail.html', context)

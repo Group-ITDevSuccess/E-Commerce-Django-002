@@ -1,19 +1,129 @@
-{% extends "../partials/base.html" %}
-{% block content %}
-<div class="row">
-    <div class="col-md-6 mt-5 mb-5">
-        <div class="product-image">
-            <img src="{{product.image}}" class="img-fluid" alt="Product Image" style="width: 300px; height: 300px;" />
-        </div>
-        <a href="/shop" class="btn btn-primary mt-3">Retour</a>
+{% extends "../partials/base.html" %} {% block content %}
+<div class="container">
+  <a href="/shop" class="btn btn-primary mt-3">Retour</a>
+
+  <div class="row mb-5">
+    <div class="col-md-6 col-12 mt-5 mb-5">
+      <div class="product-image">
+        <img
+          src="{{product.image}}"
+          class="img-fluid"
+          alt="Product Image"
+          style="width: 300px; height: 300px"
+        />
+      </div>
     </div>
-    <div class="col-md-6">
-        <div class="product-details">
-            <h1 class="text-warning display-3">{{product.title}}</h1>
-            <h4 class="text-danger">Prix : {{product.price}} MGA</h4>
-            <p class="text-dark">{{product.description}}</p>
-            <button href="#" id="selected_{{product.id}}" class="btn ted btn-success btn-lg">Acheter</button>
+
+    <div class="col-md-6 col-12">
+      <div class="product-details">
+        <h1 class="text-warning display-4">{{product.title}}</h1>
+        <h4 class="text-danger">Prix : {{product.price}} MGA</h4>
+
+        <button
+          class="btn btn-primary fixed-floating-button fixed-end"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+        >
+          <div class="box-container">
+            <i class="fas fa-info"></i>
+          </div>
+        </button>
+
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasRight"
+          aria-labelledby="offcanvasRightLabel"
+        >
+          <div class="offcanvas-header bg-dark">
+            <h4 id="offcanvasRightLabel" class="text-light">{{product.title}}</h4>
+            <hr/>
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body mt-3">
+            <div class="image-container">
+              <span class="sale-price">
+                <span class="price-label">Prix en vente</span>
+                <span class="price-value">{{product.price}} MGA</span>
+              </span>
+              <img src="{{product.image}}" alt="" class="img-fluid" />
+            </div>
+            <div class="product-description">{{product.description}}</div>
+          </div>
         </div>
+
+        <button
+          href="#"
+          id="selected_{{product.id}}"
+          class="btn btn-success btn-lg mt-3"
+        >
+          Acheter
+        </button>
+      </div>
     </div>
+  </div>
 </div>
+{% endblock %} {% block css %}
+<style>
+  .image-container {
+    position: relative;
+    max-width: 100%;
+  }
+
+  .sale-price {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff0000;
+    color: #fff;
+    padding: 5px;
+    transform: rotate(-45deg);
+    z-index: 1;
+  }
+
+  .price-label {
+    font-size: 12px;
+    display: block;
+  }
+
+  .price-value {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .product-description {
+    margin-top: 10px;
+  }
+
+  .fixed-floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+
+  .fixed-floating-button .btn {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box-container {
+    border-radius: 100% 100%%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn.fixed-bottom {
+    margin-bottom: 40px;
+  }
+</style>
 {% endblock %}
